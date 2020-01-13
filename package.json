@@ -7,7 +7,7 @@
     "dev": "next app",
     "build": "next build app",
     "start": "next start",
-    "server": "webpack --mode=development --config webpack.js --watch"
+    "server": "webpack --mode=development --config server/webpack.js --watch"
   },
   "author": "",
   "license": "ISC",

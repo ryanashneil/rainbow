@@ -5,7 +5,10 @@ const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 const paths = {
   SERVER_BUILD: path.resolve(fs.realpathSync(process.cwd()), "build"),
-  TS_CONFIG: path.resolve(fs.realpathSync(process.cwd()), "tsconfig.json")
+  TS_CONFIG: path.resolve(
+    fs.realpathSync(process.cwd()),
+    "server/tsconfig.json"
+  )
 };
 
 const nodeModules = {};
