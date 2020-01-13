@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
-    "build": "next build",
+    "dev": "next app",
+    "build": "next build app",
     "start": "next start",
     "server": "webpack --mode=development --config webpack.js --watch"
   },
