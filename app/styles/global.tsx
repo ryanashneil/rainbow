@@ -1,4 +1,4 @@
-import { Global, css } from '@emotion/core';
+import { Global, css } from "@emotion/core";
 
 const globalStyles = css`
     body {
@@ -18,4 +18,4 @@ const globalStyles = css`
     }
 `;
 
-export default (): JSX.Element => <Global styles={globalStyles} />
+export default (): JSX.Element => <Global styles={globalStyles} />;

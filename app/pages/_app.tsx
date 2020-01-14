@@ -1,5 +1,5 @@
 import { ThemeProvider, CSSReset } from "@chakra-ui/core";
-import Theme from 'styles/global';
+import Theme from "styles/global";
 
 export default ({ Component, pageProps }) => (
     <ThemeProvider>

@@ -1,9 +1,13 @@
-import { useState, useEffect } from 'react';
-import { validateAgainstConstraints } from './validation';
-import { IFormFunctions, IFormSchema, IBasicValueFormField, IFormFieldHashMap } from './interfaces';
+import { useState, useEffect } from "react";
+import { validateAgainstConstraints } from "./validation";
+import {
+    IFormFunctions,
+    IFormSchema,
+    IBasicValueFormField,
+    IFormFieldHashMap
+} from "./interfaces";
 
 export const useForm = (schema: IFormSchema): IFormFunctions => {
-
     const [fields, updateForm] = useState<IFormFieldHashMap>({});
     const [snapshot, updateSnapshot] = useState<IFormFieldHashMap>({});
 
@@ -32,7 +36,7 @@ export const useForm = (schema: IFormSchema): IFormFunctions => {
     };
 
     const validateFormForSubmission = async (): Promise<boolean> => {
-        let validationSuccess: boolean = true;
+        let validationSuccess = true;
         let validatedFields: IFormFieldHashMap = fields;
 
         for (const id of Object.keys(fields)) {
@@ -40,13 +44,19 @@ export const useForm = (schema: IFormSchema): IFormFunctions => {
             const error = await validateAgainstConstraints(value, constraints);
             validatedFields = _updateField(validatedFields, id, { error });
             if (error) validationSuccess = false;
-        };
+        }
 
         updateForm(validatedFields);
         return validationSuccess;
     };
 
-    return { getField, getValue, updateValue, validateValue, validateFormForSubmission };
+    return {
+        getField,
+        getValue,
+        updateValue,
+        validateValue,
+        validateFormForSubmission
+    };
 };
 
 const _setupFormFields = (schema: IFormSchema): IFormFieldHashMap => {
@@ -55,20 +65,27 @@ const _setupFormFields = (schema: IFormSchema): IFormFieldHashMap => {
 
     for (const id of fieldKeys) {
         const basicField: IBasicValueFormField = schema[id];
-        formFields[id] = { ...basicField, id, value: '', error: '' };
-    };
+        formFields[id] = { ...basicField, id, value: "", error: "" };
+    }
 
     return formFields;
 };
 
-const _updateField = (fields: IFormFieldHashMap, id: string, updatedValue: object): IFormFieldHashMap => {
+const _updateField = (
+    fields: IFormFieldHashMap,
+    id: string,
+    updatedValue: object
+): IFormFieldHashMap => {
     return {
         ...fields,
         [id]: { ...fields[id], ...updatedValue }
     };
 };
 
-const _checkChanges = (fields: IFormFieldHashMap, snapshot: IFormFieldHashMap): boolean => {
+const _checkChanges = (
+    fields: IFormFieldHashMap,
+    snapshot: IFormFieldHashMap
+): boolean => {
     for (const id of Object.keys(fields)) {
         if (fields[id].value !== snapshot[id].value) {
             return true;
