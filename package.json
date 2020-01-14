@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "next app",
-    "build": "next build app",
+    "build": "next build app && next export app -o public",
     "start": "next start",
     "server": "webpack --mode=development --config server/webpack.js --watch"
   },

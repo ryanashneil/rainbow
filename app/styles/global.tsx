@@ -4,7 +4,7 @@ const globalStyles = css`
     body {
         margin: 0;
         padding: 0;
-        background: #f9f9f9;
+        background: white;
     }
     h1 {
         font-size: 32px;
