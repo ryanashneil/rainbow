@@ -1,6 +1,7 @@
 import Segment from "components/Segment";
 import styled from '@emotion/styled';
 import { Button } from "@chakra-ui/core";
+import { breakpoint } from "styles/tokens";
 
 export const NavContainer = styled.div`
     display: flex;
