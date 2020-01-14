@@ -7,7 +7,6 @@
         "dev": "next app",
         "build": "next build app && next export app -o public",
         "start": "next start",
-        "server": "webpack --mode=development --config server/webpack.js --watch",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
     },
     "author": "",
