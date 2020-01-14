@@ -1,6 +1,5 @@
 import Segment from "components/Segment";
 import styled from '@emotion/styled';
-import { Button } from "@chakra-ui/core";
 import { color } from "styles/tokens";
 
 export const NavContainer = styled.div`
@@ -8,6 +7,7 @@ export const NavContainer = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid 
     img {
         width: 125px;
     }
