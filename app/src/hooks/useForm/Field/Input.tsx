@@ -32,6 +32,7 @@ const FieldInput = (props: IFieldInputProps): JSX.Element => {
             <FieldElement
                 id={id}
                 type={field.type === "textarea" ? "text" : field.type}
+                placeholder={field.placeholder}
                 aria-describedby={field.name}
                 onChange={onChangeHandler}
                 onBlur={onBlurHandler}

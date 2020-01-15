@@ -5,7 +5,8 @@ import { getProfile } from "src/db/api";
 import { IPerson } from "src/db/interface";
 import AppPage from "src/components/Layout/AppPage";
 import Accordion from "src/components/Accordion";
-import { Spinner } from "@chakra-ui/core";
+import { Spinner, Box } from "@chakra-ui/core";
+import AddInfoModal from "src/components/Template/AddInfoModal";
 
 export default () => {
     const [profile, setProfile] = useState<IPerson | undefined>(undefined);
@@ -27,6 +28,8 @@ export default () => {
                 items={profile.info}
                 emptyState={["No Info specified!", "/images/empty_info.png"]}
             />
+            <Box marginTop="24px" />
+            <AddInfoModal />
         </AppPage>
     );
 };

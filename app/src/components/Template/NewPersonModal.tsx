@@ -1,7 +1,8 @@
 import { IFormSchema, useForm, Field } from "src/hooks/useForm";
-import { addProfile } from "../../db/api";
+import { addProfile } from "src/db/api";
 import { getSession } from "src/utils/session";
 import Router from "next/router";
+
 import {
     useDisclosure,
     Button,
@@ -25,7 +26,10 @@ export default () => {
     const form = useForm(schema);
 
     const submit = async () => {
-        await addProfile(getSession(), { name: form.getValue(NAME) });
+        const newKey = await addProfile(getSession(), {
+            name: form.getValue(NAME)
+        });
+        Router.push(`/details?id=${newKey}`);
         onClose();
     };
 

@@ -1,8 +1,12 @@
 import { db, get, list } from "./util";
 import { IPerson, IObject, IProfile } from "./interface";
 
-export const addProfile = async (userId: string, newPerson: any) => {
-    await db(`/${userId}`).push(newPerson);
+export const addProfile = async (
+    userId: string,
+    newPerson: any
+): Promise<string> => {
+    const result = await db(`/${userId}`).push(newPerson);
+    return result.key;
 };
 
 export const getAllProfiles = async (userId: string): Promise<IProfile[]> => {
