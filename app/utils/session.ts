@@ -24,7 +24,8 @@ export const isLoggedIn = (): boolean => {
 
 export const logout = (): void => {
     try {
-        return localStorage.removeItem(ID);
+        localStorage.removeItem(ID);
+        Router.push("/login");
     } catch {
         return;
     }

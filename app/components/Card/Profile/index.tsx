@@ -1,6 +1,6 @@
 import React from "react";
 import Router from "next/router";
-import { Heading, Text, Box, PseudoBox } from "@chakra-ui/core";
+import { Heading, Text, Box, PseudoBox, Icon } from "@chakra-ui/core";
 import { color } from "styles/tokens";
 
 interface ICardInfo {
@@ -17,6 +17,9 @@ export default (props: ICardInfo): JSX.Element => {
         <PseudoBox
             as="button"
             borderRadius="8px"
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
             padding="24px"
             width="100%"
             boxShadow="0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)"
@@ -28,6 +31,7 @@ export default (props: ICardInfo): JSX.Element => {
                 <Heading size="md">{props.name}</Heading>
                 <Text mt="4px">{props.age} years old</Text>
             </Box>
+            <Icon name="chevron-right" size="32px" opacity={0.3} />
         </PseudoBox>
     );
 };
