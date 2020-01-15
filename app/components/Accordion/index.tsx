@@ -15,7 +15,7 @@ export interface IAccordionItem {
 }
 
 interface IAccordion {
-    items: IAccordionItem[];
+    items: { [key: string]: string };
 }
 
 const Item = (props: IAccordionItem) => (
@@ -38,12 +38,8 @@ const Item = (props: IAccordionItem) => (
 export default (props: IAccordion) => {
     return (
         <Accordion allowMultiple={true}>
-            {props.items.map(item => (
-                <Item
-                    key={item.title}
-                    title={item.title}
-                    content={item.content}
-                />
+            {Object.keys(props.items).map(key => (
+                <Item key={key} title={key} content={props.items[key]} />
             ))}
         </Accordion>
     );
