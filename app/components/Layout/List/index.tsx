@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Spinner, Stack, Flex } from "@chakra-ui/core";
+import { Spinner, Flex } from "@chakra-ui/core";
+import styled from "@emotion/styled";
 
 interface IList<T> {
     spacing?: number;
@@ -7,6 +8,16 @@ interface IList<T> {
     getItems: () => Promise<T[]>;
     buildEachItem: (item: T) => void;
 }
+
+interface ISpace {
+    marginBottom: number;
+}
+
+const ListWithSpace = styled.div`
+    > * {
+        margin-bottom: ${(props: ISpace) => `${props.marginBottom}px`};
+    }
+`;
 
 const ListSpinner = () => (
     <Flex justifyContent="center" marginTop="24px">
@@ -27,9 +38,9 @@ export default <T extends {}>(props: IList<T>) => {
     useEffect(() => void fetchData(), []);
 
     const fetchData = async () => {
-        await setLoading(true);
-        await setDataList(await props.getItems());
-        await setLoading(false);
+        setLoading(true);
+        setDataList(await props.getItems());
+        setLoading(false);
     };
 
     if (isLoading) {
@@ -41,8 +52,8 @@ export default <T extends {}>(props: IList<T>) => {
     }
 
     return (
-        <Stack spacing={props.spacing || "24px"}>
+        <ListWithSpace marginBottom={props.spacing || 16}>
             {dataList.map(props.buildEachItem)}
-        </Stack>
+        </ListWithSpace>
     );
 };
