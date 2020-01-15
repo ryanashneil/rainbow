@@ -1,8 +1,8 @@
-import { getAllProfiles } from "db/api";
-import { getSession } from "utils/session";
-import Profile from "components/Card/Profile";
-import List from "components/Layout/List";
-import Page from "components/Layout/AppPage";
+import { getAllProfiles } from "src/db/api";
+import { getSession } from "src/utils/session";
+import Profile from "src/components/Card/Profile";
+import List from "src/components/Layout/List";
+import Page from "src/components/Layout/AppPage";
 
 export default () => (
     <Page title="Profiles">

@@ -1,5 +1,5 @@
 import React from "react";
-import { color } from "styles/tokens";
+import { color } from "src/styles/tokens";
 import {
     Accordion,
     AccordionHeader,

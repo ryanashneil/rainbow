@@ -1,5 +1,5 @@
-import Segment from "components/Layout/Segment";
-import { color } from "styles/tokens";
+import Segment from "src/components/Layout/Segment";
+import { color } from "src/styles/tokens";
 import { Heading, Text, Box, Flex } from "@chakra-ui/core";
 
 export interface INavbar {

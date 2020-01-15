@@ -1,6 +1,6 @@
 import React from "react";
 import { Heading, Text } from "@chakra-ui/core";
-import Card from "components/Card";
+import Card from "src/components/Card";
 
 interface ICardInfo {
     title: string;

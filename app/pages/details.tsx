@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { getSession } from "utils/session";
-import { getProfile } from "db/api";
-import { IPerson } from "db/interface";
-import AppPage from "components/Layout/AppPage";
-import Accordion from "components/Accordion";
+import { getSession } from "src/utils/session";
+import { getProfile } from "src/db/api";
+import { IPerson } from "src/db/interface";
+import AppPage from "src/components/Layout/AppPage";
+import Accordion from "src/components/Accordion";
 import { Spinner } from "@chakra-ui/core";
 
 export default () => {

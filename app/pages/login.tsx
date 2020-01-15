@@ -1,8 +1,8 @@
 import { Button } from "@chakra-ui/core";
-import Page from "components/Layout/AppPage";
+import Page from "src/components/Layout/AppPage";
 import Router from "next/router";
-import { IFormSchema, useForm, Field } from "hooks/useForm";
-import { isLoggedIn } from "utils/session";
+import { IFormSchema, useForm, Field } from "src/hooks/useForm";
+import { isLoggedIn } from "src/utils/session";
 
 const USERNAME = "username";
 
@@ -18,7 +18,7 @@ export default () => {
     const form = useForm(loginSchema);
     const handleLogin = () => {
         localStorage.setItem("userId", form.getValue(USERNAME));
-        Router.push("/profiles");
+        return Router.push("/profiles");
     };
     if (isLoggedIn()) {
         return Router.push("/profiles");

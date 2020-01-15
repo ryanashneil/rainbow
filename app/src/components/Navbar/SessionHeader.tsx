@@ -1,5 +1,5 @@
-import { isLoggedIn, logout } from "utils/session";
-import Segment from "components/Layout/Segment";
+import { isLoggedIn, logout } from "src/utils/session";
+import Segment from "src/components/Layout/Segment";
 import { Flex, Button } from "@chakra-ui/core";
 
 export default (): JSX.Element => {

@@ -1,7 +1,7 @@
 import React from "react";
 import Router from "next/router";
 import { Heading, Text, Box, PseudoBox, Icon } from "@chakra-ui/core";
-import { color } from "styles/tokens";
+import { color } from "src/styles/tokens";
 
 interface ICardInfo {
     name: string;

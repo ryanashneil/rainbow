@@ -1,4 +1,4 @@
-import Segment from "components/Segment";
+import Segment from "src/components/Layout/Segment";
 
 export default () => (
     <div>

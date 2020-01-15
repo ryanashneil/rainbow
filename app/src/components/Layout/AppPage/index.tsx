@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar, { INavbar } from "components/Navbar";
-import Segment from "components/Layout/Segment";
-import SessionHeader from "components/Navbar/SessionHeader";
+import Navbar, { INavbar } from "src/components/Navbar";
+import Segment from "src/components/Layout/Segment";
+import SessionHeader from "src/components/Navbar/SessionHeader";
 
 // eslint-disable-next-line prettier/prettier
 interface IAppPage extends React.Props<{}>, INavbar { }
