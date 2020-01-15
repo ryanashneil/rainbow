@@ -21,8 +21,6 @@ export default () => {
         return <Spinner />;
     }
 
-    console.log(profile);
-
     return (
         <AppPage title={profile.name} subtitle={"24 years old"}>
             <Accordion items={profile.info} />
