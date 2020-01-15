@@ -22,7 +22,8 @@
         "@typescript-eslint/interface-name-prefix": "off",
         "react/prop-types": 0,
         "react/display-name": 0,
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "@typescript-eslint/no-use-before-define": "off"
     },
     "settings": {
         "react": {
