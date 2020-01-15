@@ -9,7 +9,7 @@ export default () => (
         <List
             getItems={() => getAllProfiles(getSession())}
             buildEachItem={user => (
-                <Profile id={user.key} name={user.name} age={user.age} />
+                <Profile name={user.name} age={user.age} id={user.key} />
             )}
         />
     </Page>
