@@ -9,13 +9,8 @@ export default () => (
     <Page title="Profiles" RightElement={NewPersonModal}>
         <List
             getItems={() => getAllProfiles(getSession())}
-            buildEachItem={user => (
-                <Profile
-                    key={user.key}
-                    name={user.name}
-                    age={user.age}
-                    id={user.key}
-                />
+            buildEachItem={({ key, name, age }) => (
+                <Profile key={key} name={name} age={age} id={key} />
             )}
         />
     </Page>
