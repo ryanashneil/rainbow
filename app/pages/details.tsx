@@ -23,7 +23,10 @@ export default () => {
 
     return (
         <AppPage title={profile.name} subtitle={"24 years old"}>
-            <Accordion items={profile.info} />
+            <Accordion
+                items={profile.info}
+                emptyState={["No Info specified!", "/images/empty_info.png"]}
+            />
         </AppPage>
     );
 };

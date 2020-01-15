@@ -1,5 +1,6 @@
 import React from "react";
 import { color } from "src/styles/tokens";
+import EmptyState from "src/components/EmptyState";
 import {
     Accordion,
     AccordionHeader,
@@ -15,6 +16,7 @@ export interface IAccordionItem {
 }
 
 interface IAccordion {
+    emptyState?: [string, string];
     items: { [key: string]: string };
 }
 
@@ -37,6 +39,14 @@ const Item = (props: IAccordionItem) => (
 );
 
 export default (props: IAccordion) => {
+    if (!props.items && props.emptyState) {
+        return (
+            <EmptyState
+                message={props.emptyState[0]}
+                imagePath={props.emptyState[1]}
+            />
+        );
+    }
     if (!props.items) {
         return <div>No data found</div>;
     }
