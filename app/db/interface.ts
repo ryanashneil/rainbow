@@ -4,7 +4,6 @@ export interface IPersonObject {
 export interface IPerson {
     name: string;
     age: number;
-    hobbies: string;
 }
 
 export interface IProfile extends IPerson {
