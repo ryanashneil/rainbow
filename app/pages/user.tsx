@@ -1,13 +1,27 @@
-import Router from "next/router";
+import Navbar from "components/Navbar";
+import Segment from "components/Segment";
+import { useEffect, useState } from "react";
+import { getAllUsers } from "db/api";
+import { getSession } from "utils/sessions";
+import Profile from "components/Card/Profile";
 
 export default () => {
-    try {
-        const userId = localStorage.getItem("userId");
-        if (!userId) {
-            Router.push("/login");
-        }
-        return <div>hello {userId}</div>;
-    } catch {
-        return <div></div>;
-    }
+    const [users, setUsers] = useState([]);
+    useEffect(() => void mount(), []);
+
+    const mount = async () => {
+        const id = getSession();
+        setUsers(await getAllUsers(id));
+    };
+
+    return (
+        <div>
+            <Navbar title="Profiles" />
+            <Segment>
+                {users.map(user => (
+                    <Profile key={user.name} name={user.name} age={12} />
+                ))}
+            </Segment>
+        </div>
+    );
 };
