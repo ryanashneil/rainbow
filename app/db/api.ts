@@ -1,4 +1,4 @@
-import { db, getObj, listifyObj } from "./util";
+import { db, get, list } from "./util";
 import { IPerson, IObject, IProfile } from "./interface";
 
 export const addProfile = async (userId: string, newPerson: any) => {
@@ -6,13 +6,13 @@ export const addProfile = async (userId: string, newPerson: any) => {
 };
 
 export const getAllProfiles = async (userId: string): Promise<IProfile[]> => {
-    const dataObj = await getObj<IObject<IPerson>>(`/${userId}`);
-    return listifyObj(dataObj) as IProfile[];
+    const dataObj = await get<IObject<IPerson>>(`/${userId}`);
+    return list(dataObj) as IProfile[];
 };
 
 export const getProfile = async (
     userId: string,
     profileId: string
 ): Promise<IPerson> => {
-    return await getObj<IPerson>(`/${userId}/${profileId}`);
+    return await get<IPerson>(`/${userId}/${profileId}`);
 };
