@@ -2,11 +2,9 @@
     "name": "rainbow",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
     "scripts": {
         "dev": "next app",
         "build": "next build app && next export app -o public",
-        "start": "next start",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
     },
     "author": "",

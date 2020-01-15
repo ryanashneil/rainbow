@@ -2,7 +2,7 @@ import Segment from "components/Segment";
 import { color } from "styles/tokens";
 import { Heading, Text, Box, Flex } from "@chakra-ui/core";
 
-interface INavbar {
+export interface INavbar {
     title?: string;
     subtitle?: string;
 }
