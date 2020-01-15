@@ -9,7 +9,7 @@ interface IAppPage extends React.Props<{}>, INavbar { }
 export default (props: IAppPage) => (
     <>
         <SessionHeader />
-        <Navbar title={props.title} subtitle={props.subtitle} />
+        <Navbar {...props} />
         <Segment marginTop="40px">{props.children}</Segment>
     </>
 );
