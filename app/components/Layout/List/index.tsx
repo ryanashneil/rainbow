@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Spinner, Stack } from "@chakra-ui/core";
+import { Spinner, Stack, Flex } from "@chakra-ui/core";
 
 interface IList<T> {
     spacing?: number;
@@ -9,13 +9,15 @@ interface IList<T> {
 }
 
 const ListSpinner = () => (
-    <Spinner
-        thickness="4px"
-        speed="0.65s"
-        emptyColor="gray.200"
-        color="blue.500"
-        size="xl"
-    />
+    <Flex justifyContent="center" marginTop="24px">
+        <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+        />
+    </Flex>
 );
 
 export default <T extends {}>(props: IList<T>) => {
@@ -39,7 +41,7 @@ export default <T extends {}>(props: IList<T>) => {
     }
 
     return (
-        <Stack spacing={props.spacing || 2}>
+        <Stack spacing={props.spacing || "24px"}>
             {dataList.map(props.buildEachItem)}
         </Stack>
     );
