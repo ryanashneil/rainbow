@@ -16,6 +16,12 @@ const globalStyles = css`
         font-weight: 400;
         margin: 0;
     }
+    input[type="text"] {
+        /* Remove First */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
 `;
 
 export default (): JSX.Element => <Global styles={globalStyles} />;
