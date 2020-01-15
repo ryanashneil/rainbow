@@ -12,7 +12,9 @@ export default (props: INavbar): JSX.Element => (
         <Flex justifyContent="space-between">
             <Box>
                 {props.title && <Heading>{props.title}</Heading>}
-                {props.subtitle && <Text>{props.subtitle}</Text>}
+                {props.subtitle && (
+                    <Text marginTop="8px">{props.subtitle}</Text>
+                )}
             </Box>
         </Flex>
     </Segment>

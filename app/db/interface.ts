@@ -1,10 +1,11 @@
-export interface IPersonObject {
-    [key: string]: IPerson;
+export interface IObject<T> {
+    [key: string]: T;
 }
+
 export interface IPerson {
     name: string;
     age: number;
-    hobbies: string;
+    info: { [key: string]: string };
 }
 
 export interface IProfile extends IPerson {
