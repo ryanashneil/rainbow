@@ -2,7 +2,7 @@ import Navbar from "components/Navbar";
 import Segment from "components/Segment";
 import { useEffect, useState } from "react";
 import { getAllUsers } from "db/api";
-import { getSession } from "utils/sessions";
+import { getSession } from "utils/session";
 import Profile from "components/Card/Profile";
 
 export default () => {

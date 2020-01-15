@@ -1,12 +1,12 @@
 import { Button } from "@chakra-ui/core";
-import Navbar from "../components/Navbar";
+import Navbar from "components/Navbar";
 import Segment from "components/Segment";
 import Router from "next/router";
 import { IFormSchema, useForm, Field } from "hooks/useForm";
 
 const USERNAME = "username";
 
-const loginScheme: IFormSchema = {
+const loginSchema: IFormSchema = {
     [USERNAME]: {
         type: "text",
         name: "Username",
@@ -15,8 +15,7 @@ const loginScheme: IFormSchema = {
 };
 
 export default () => {
-    const form = useForm(loginScheme);
-
+    const form = useForm(loginSchema);
     const handleLogin = () => {
         localStorage.setItem("userId", form.getValue(USERNAME));
         Router.push("/user");
@@ -25,14 +24,13 @@ export default () => {
     return (
         <>
             <Navbar title="Login" subtitle="Please sign in to continue" />
-
-            <Segment marginTop={"40px"}>
+            <Segment marginTop="40px">
                 <Field.Input form={form} id={USERNAME} />
                 <Button
                     marginTop={6}
                     onClick={handleLogin}
                     float="right"
-                    variantColor={"teal"}
+                    variantColor="teal"
                 >
                     Login
                 </Button>
