@@ -25,6 +25,7 @@ const Item = (props: IAccordionItem) => (
                 flex="1"
                 textAlign="left"
                 color={color.primary.v1}
+                fontSize="20px"
                 fontWeight="medium"
             >
                 {props.title}
