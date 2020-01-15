@@ -18,10 +18,10 @@ export default () => {
     const form = useForm(loginSchema);
     const handleLogin = () => {
         localStorage.setItem("userId", form.getValue(USERNAME));
-        Router.push("/user");
+        Router.push("/profiles");
     };
     if (isLoggedIn()) {
-        return Router.push("/user");
+        return Router.push("/profiles");
     }
     return (
         <Page title="Login" subtitle="Please sign in to continue">

@@ -5,11 +5,12 @@ import { Heading, Text, Box } from "@chakra-ui/core";
 interface ICardInfo {
     name: string;
     age: number;
+    id: string;
 }
 
 export default (props: ICardInfo): JSX.Element => {
     const goToProfile = (): void => {
-        Router.push("/user?id=" + props.name);
+        Router.push("/details?id=" + props.id);
     };
     return (
         <Box

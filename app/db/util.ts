@@ -4,14 +4,18 @@ export const db = (ref?: string): firebase.database.Reference => {
     return firebase.database().ref(ref);
 };
 
-export const getAll = async <T>(ref: string): Promise<T[]> => {
+export const getObj = async <T>(ref: string): Promise<T> => {
     const data = await firebase
         .database()
         .ref(ref)
         .once("value");
+    return data.val();
+};
+
+export const listifyObj = <T, V extends T>(obj: { [key: string]: T }) => {
     const arr = [];
-    for (const key in data.val()) {
-        arr.push({ key, ...data.val()[key] });
+    for (const key in obj) {
+        arr.push({ key, ...obj[key] });
     }
-    return arr as T[];
+    return arr as V[];
 };

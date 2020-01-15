@@ -1,25 +1,30 @@
 import Navbar from "components/Navbar";
 import Segment from "components/Segment";
 import { useEffect, useState } from "react";
-import { getAllUsers } from "db/api";
+import { getAllProfiles } from "db/api";
 import { getSession } from "utils/session";
 import Profile from "components/Card/Profile";
 
 export default () => {
-    const [users, setUsers] = useState([]);
+    const [profiles, setProfiles] = useState([]);
     useEffect(() => void mount(), []);
 
     const mount = async () => {
         const id = getSession();
-        setUsers(await getAllUsers(id));
+        setProfiles(await getAllProfiles(id));
     };
 
     return (
         <div>
             <Navbar title="Profiles" />
             <Segment>
-                {users.map(user => (
-                    <Profile key={user.name} name={user.name} age={12} />
+                {profiles.map(profile => (
+                    <Profile
+                        key={profile.name}
+                        name={profile.name}
+                        age={12}
+                        id={profile.key}
+                    />
                 ))}
             </Segment>
         </div>
