@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar, { INavbar } from "components/Navbar";
-import Segment from "components/Segment";
+import Segment from "components/Layout/Segment";
 import SessionHeader from "components/Navbar/SessionHeader";
 
 // eslint-disable-next-line prettier/prettier
