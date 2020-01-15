@@ -4,7 +4,7 @@
     "description": "",
     "scripts": {
         "dev": "next app",
-        "build": "next build app && next export app -o public",
+        "build": "next build app && next export app -o build",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
     },
     "author": "",
