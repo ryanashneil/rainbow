@@ -1,5 +1,5 @@
 import { IFormSchema, useForm, Field } from "src/hooks/useForm";
-import { addProfile } from "src/db/api";
+import { updateProfileInfo } from "src/db/api";
 import { getSession } from "src/utils/session";
 
 import {
@@ -33,15 +33,17 @@ const schema: IFormSchema = {
 
 interface IModal {
     onSubmit: () => void;
+    id: string;
 }
 
-export default () => {
+export default (props: IModal) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const form = useForm(schema);
-
     const submit = async () => {
-        // await addProfile(getSession(), { name: form.getValue(NAME) });
-        // props.onSubmit();
+        await updateProfileInfo(getSession(), props.id, {
+            [form.getValue(TITLE)]: form.getValue(DESCRIPTION)
+        });
+        props.onSubmit();
         onClose();
     };
 

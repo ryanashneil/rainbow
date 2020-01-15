@@ -9,6 +9,14 @@ export const addProfile = async (
     return result.key;
 };
 
+export const updateProfileInfo = async (
+    userId: string,
+    profileId: string,
+    newInfo: any
+): Promise<void> => {
+    await db(`/${userId}/${profileId}/info`).update(newInfo);
+};
+
 export const getAllProfiles = async (userId: string): Promise<IProfile[]> => {
     const dataObj = await get<IObject<IPerson>>(`/${userId}`);
     return list(dataObj) as IProfile[];

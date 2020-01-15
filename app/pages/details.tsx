@@ -41,7 +41,7 @@ export default () => {
                 emptyState={["No Info specified!", "/images/empty_info.png"]}
             />
             <Box marginTop="24px" />
-            <AddInfoModal />
+            <AddInfoModal id={profileId as string} onSubmit={fetchProfile} />
         </AppPage>
     );
 };
