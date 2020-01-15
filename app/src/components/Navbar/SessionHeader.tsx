@@ -2,11 +2,10 @@ import { isLoggedIn, logout } from "src/utils/session";
 import Segment from "src/components/Layout/Segment";
 import { Flex, Button } from "@chakra-ui/core";
 
-export default (): JSX.Element => {
-    if (!isLoggedIn()) return <div />;
-    return (
-        <Segment height={30} background="#323233">
-            <Flex direction="row-reverse">
+export default (): JSX.Element => (
+    <Segment height={30} background="#323233">
+        <Flex direction="row-reverse">
+            {isLoggedIn() && (
                 <Button
                     variant="unstyled"
                     color="white"
@@ -15,7 +14,7 @@ export default (): JSX.Element => {
                 >
                     Log out
                 </Button>
-            </Flex>
-        </Segment>
-    );
-};
+            )}
+        </Flex>
+    </Segment>
+);

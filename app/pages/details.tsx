@@ -5,21 +5,33 @@ import { getProfile } from "src/db/api";
 import { IPerson } from "src/db/interface";
 import AppPage from "src/components/Layout/AppPage";
 import Accordion from "src/components/Accordion";
-import { Spinner, Box } from "@chakra-ui/core";
+import { Spinner, Box, Flex } from "@chakra-ui/core";
 import AddInfoModal from "src/components/Template/AddInfoModal";
 
 export default () => {
     const [profile, setProfile] = useState<IPerson | undefined>(undefined);
     const { id: profileId } = useRouter().query;
-    useEffect(() => void mount(), [profileId]);
+    useEffect(() => void fetchProfile(), [profileId]);
 
-    const mount = async () => {
+    const fetchProfile = async () => {
         const userId = getSession();
         setProfile(await getProfile(userId, profileId as string));
     };
 
     if (!profile) {
-        return <Spinner />;
+        return (
+            <AppPage>
+                <Flex justifyContent="center">
+                    <Spinner
+                        thickness="4px"
+                        speed="0.65s"
+                        emptyColor="gray.200"
+                        color="blue.500"
+                        size="xl"
+                    />
+                </Flex>
+            </AppPage>
+        );
     }
 
     return (
