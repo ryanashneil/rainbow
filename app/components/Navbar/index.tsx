@@ -8,11 +8,11 @@ export interface INavbar {
 }
 
 export default (props: INavbar): JSX.Element => (
-    <Segment height={120} background={color.primary.v1}>
+    <Segment height={120} background={color.grey.v1}>
         <Flex justifyContent="space-between">
             <Box>
-                {props.title && <Heading color="white">{props.title}</Heading>}
-                {props.subtitle && <Text color="white">{props.subtitle}</Text>}
+                {props.title && <Heading>{props.title}</Heading>}
+                {props.subtitle && <Text>{props.subtitle}</Text>}
             </Box>
         </Flex>
     </Segment>

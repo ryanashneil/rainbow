@@ -1,32 +1,16 @@
-import Navbar from "components/Navbar";
-import Segment from "components/Segment";
-import { useEffect, useState } from "react";
 import { getAllProfiles } from "db/api";
 import { getSession } from "utils/session";
 import Profile from "components/Card/Profile";
+import List from "components/Layout/List";
+import Page from "components/Layout/AppPage";
 
-export default () => {
-    const [profiles, setProfiles] = useState([]);
-    useEffect(() => void mount(), []);
-
-    const mount = async () => {
-        const id = getSession();
-        setProfiles(await getAllProfiles(id));
-    };
-
-    return (
-        <div>
-            <Navbar title="Profiles" />
-            <Segment>
-                {profiles.map(profile => (
-                    <Profile
-                        key={profile.name}
-                        name={profile.name}
-                        age={12}
-                        id={profile.key}
-                    />
-                ))}
-            </Segment>
-        </div>
-    );
-};
+export default () => (
+    <Page title="Profiles">
+        <List
+            getItems={() => getAllProfiles(getSession())}
+            buildEachItem={user => (
+                <Profile name={user.name} age={user.age} id={user.key} />
+            )}
+        />
+    </Page>
+);

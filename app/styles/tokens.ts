@@ -1,6 +1,9 @@
 export const color = {
     primary: {
         v1: "#319795"
+    },
+    grey: {
+        v1: "#EDF2F7"
     }
 };
 
