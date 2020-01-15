@@ -37,6 +37,9 @@ const Item = (props: IAccordionItem) => (
 );
 
 export default (props: IAccordion) => {
+    if (!props.items) {
+        return <div>No data found</div>;
+    }
     return (
         <Accordion allowMultiple={true}>
             {Object.keys(props.items).map(key => (

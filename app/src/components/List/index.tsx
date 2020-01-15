@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { Spinner, Flex } from "@chakra-ui/core";
 import styled from "@emotion/styled";
+import EmptyState from "src/components/EmptyState";
 
 interface IList<T> {
     spacing?: number;
-    emptyPlaceholder?: string;
+    emptyState: [string, string];
     getItems: () => Promise<T[]>;
     buildEachItem: (item: T) => void;
 }
@@ -48,7 +49,12 @@ export default <T extends {}>(props: IList<T>) => {
     }
 
     if (!dataList.length) {
-        return <h3>{props.emptyPlaceholder || "No results found"}</h3>;
+        return (
+            <EmptyState
+                message={props.emptyState[0]}
+                imagePath={props.emptyState[1]}
+            />
+        );
     }
 
     return (
