@@ -1,4 +1,5 @@
 import { IConstraint } from "./validation";
+import { ReactNode } from "react";
 
 export interface IFormFunctions {
     getField: (id: string) => IFormField;
@@ -33,6 +34,7 @@ export interface IBasicValueFormField extends IBasicFormProperties {
     type: TFieldType;
     name: string;
     placeholder?: string;
+    helpertext?: ReactNode | string;
 }
 
 export interface IFormField extends IBasicValueFormField, IFormProperties {}
