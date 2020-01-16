@@ -10,6 +10,8 @@ export default (props: IAppPage) => (
     <>
         <SessionHeader />
         <Navbar {...props} />
-        <Segment marginTop="40px">{props.children}</Segment>
+        <Segment marginTop="40px" marginBottom="40px">
+            {props.children}
+        </Segment>
     </>
 );
