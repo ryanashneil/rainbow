@@ -6,6 +6,7 @@ import { IPerson } from "src/db/interface";
 import AppPage from "src/components/Layout/AppPage";
 import Accordion from "src/components/Accordion";
 import AddInfoModal from "src/components/Template/AddInfoModal";
+import QRCodeModal from "src/components/Template/QRCodeModal";
 import Spinner from "src/components/Spinner";
 
 export default () => {
@@ -28,6 +29,7 @@ export default () => {
 
     return (
         <AppPage title={profile.name} subtitle={"24 years old"} hasBackButton>
+            <QRCodeModal name={profile.name} />
             <Accordion
                 items={profile.info}
                 emptyState={["No Info specified!", "/images/empty_info.png"]}

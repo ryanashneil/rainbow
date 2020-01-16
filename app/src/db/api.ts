@@ -30,11 +30,19 @@ export const getProfile = async (
     return await get<IPerson>(`/${userId}/${profileId}`);
 };
 
-export const uploadPhoto = async (id, file: any) => {
+export const uploadPhoto = async (id: string, file: File) => {
     const blob = new Blob([file], { type: "image/png" });
 
     return await firebase
         .storage()
-        .ref(`/${id}/hello`)
+        .ref(`/${id}/photo`)
         .put(blob);
+};
+
+export const getPhotoURL = async (): Promise<string> => {
+    return await firebase
+        .storage()
+        .ref()
+        .child("download.png")
+        .getDownloadURL();
 };
