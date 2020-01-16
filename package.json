@@ -17,8 +17,11 @@
         "emotion-theming": "^10.0.27",
         "firebase": "^7.6.2",
         "next": "^9.1.7",
+        "qrcode": "^1.4.4",
+        "qrcode.react": "^1.0.0",
         "react": "^16.12.0",
-        "react-dom": "^16.12.0"
+        "react-dom": "^16.12.0",
+        "react-icons": "^3.8.0"
     },
     "devDependencies": {
         "@types/node": "^13.1.6",

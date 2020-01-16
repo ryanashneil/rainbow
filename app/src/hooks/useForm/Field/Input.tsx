@@ -1,15 +1,22 @@
 import React from "react";
 
 import { IFormFunctions } from "src/hooks/useForm/interfaces";
-import { FormControl, FormLabel, Input, Textarea } from "@chakra-ui/core";
+import {
+    FormControl,
+    FormLabel,
+    Input,
+    Textarea,
+    FormHelperText
+} from "@chakra-ui/core";
 
 interface IFieldInputProps {
     id: string;
     form: IFormFunctions;
+    width?: string;
 }
 
 const FieldInput = (props: IFieldInputProps): JSX.Element => {
-    const { id, form } = props;
+    const { id, form, width } = props;
     const field = form.getField(id);
 
     if (!field) {
@@ -39,7 +46,13 @@ const FieldInput = (props: IFieldInputProps): JSX.Element => {
                 aria-describedby={field.name}
                 onChange={onChangeHandler}
                 onBlur={onBlurHandler}
+                width={width || "100%"}
             />
+            {field.helpertext && (
+                <FormHelperText id={`${id}-helper-text`}>
+                    {field.helpertext}
+                </FormHelperText>
+            )}
         </FormControl>
     );
 };
