@@ -5,7 +5,6 @@ import { getProfile } from "src/db/api";
 import { IPerson } from "src/db/interface";
 import AppPage from "src/components/Layout/AppPage";
 import Accordion from "src/components/Accordion";
-import { Box } from "@chakra-ui/core";
 import AddInfoModal from "src/components/Template/AddInfoModal";
 import Spinner from "src/components/Spinner";
 
@@ -28,7 +27,7 @@ export default () => {
     }
 
     return (
-        <AppPage title={profile.name} subtitle={"24 years old"}>
+        <AppPage title={profile.name} subtitle={"24 years old"} hasBackButton>
             <Accordion
                 items={profile.info}
                 emptyState={["No Info specified!", "/images/empty_info.png"]}
