@@ -4,6 +4,8 @@ import { getSession } from "src/utils/session";
 import Router from "next/router";
 import { FaPrint } from 'react-icons/fa';
 import QRCode from 'qrcode.react';
+import React from 'react';
+import { useClipboard } from 'use-clipboard-copy';
 
 import {
     useDisclosure,
@@ -11,6 +13,7 @@ import {
     Button,
     ButtonGroup,
     Flex,
+    Input,
     Modal,
     ModalOverlay,
     ModalContent,
@@ -26,6 +29,7 @@ interface IModal {
 
 export default (props: IModal) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const clipboard = useClipboard();
 
 
 
@@ -46,22 +50,18 @@ export default (props: IModal) => {
                       You can now use {props.name}'s personal QR code.
                       </Box>
                       <QRCode padding="20px" size="100" value="www.google.com"/>
-                      <ButtonGroup marginTop="20px" spacing={4} width={[
-                              "15%", // base
-                              "25%", // 480px upwards
-                              "50%", // 768px upwards
-                              "100%", // 992px upwards
-                            ]}>
-                        <Button leftIcon="download" onClick={onOpen} variantColor="teal" marginBottom="12px">
+                        <Flex direction={["column", "column", "row"]}>
+                        <Button leftIcon="download" onClick={onOpen} variantColor="teal" margin="10px">
                             Save image
                         </Button>
-                        <Button leftIcon="copy" onClick={onOpen} variantColor="teal" marginBottom="12px">
-                            Copy image
+                        //<input ref={clipboard.target} value="I AM COPIED"/>
+                        <Button leftIcon="copy" onClick={clipboard.copy} variantColor="teal" margin="10px">
+                            {clipboard.copied ? 'Image copied' : 'Copy image'}
                         </Button>
-                        <Button leftIcon={FaPrint} onClick={onOpen} variantColor="teal" marginBottom="12px">
+                        <Button leftIcon={FaPrint} onClick={onOpen} variantColor="teal" margin="10px">
                             Send to print
                         </Button>
-                      </ButtonGroup>
+                        </Flex>
                     </Flex>
 
                     </ModalBody>
