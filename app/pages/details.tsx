@@ -7,7 +7,8 @@ import AppPage from "src/components/Layout/AppPage";
 import Accordion from "src/components/Accordion";
 import AddInfoModal from "src/components/Template/AddInfoModal";
 import QRCodeModal from "src/components/Template/QRCodeModal";
-import Spinner from "src/components/Spinner";
+import { Flex, Avatar } from "@chakra-ui/core";
+import SpinnerCenter from "src/components/Spinner/SpinnerCenter";
 
 export default () => {
     const [profile, setProfile] = useState<IPerson | undefined>(undefined);
@@ -22,14 +23,27 @@ export default () => {
     if (!profile) {
         return (
             <AppPage>
-                <Spinner />
+                <SpinnerCenter />
             </AppPage>
         );
     }
 
     return (
         <AppPage title={profile.name} subtitle={"24 years old"} hasBackButton>
-            <QRCodeModal name={profile.name} />
+            <Flex
+                width="100%"
+                alignItems="center"
+                direction="column"
+                marginBottom="40px"
+            >
+                <Avatar
+                    name={profile.name}
+                    src={profile.image}
+                    size={"2xl"}
+                    marginBottom={16}
+                />
+                <QRCodeModal name={profile.name} />
+            </Flex>
             <Accordion
                 items={profile.info}
                 emptyState={["No Info specified!", "/images/empty_info.png"]}

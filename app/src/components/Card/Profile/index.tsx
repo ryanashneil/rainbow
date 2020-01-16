@@ -1,12 +1,21 @@
 import React from "react";
 import Router from "next/router";
-import { Heading, Text, Box, PseudoBox, Icon } from "@chakra-ui/core";
+import {
+    Heading,
+    Text,
+    Box,
+    PseudoBox,
+    Icon,
+    Avatar,
+    Flex
+} from "@chakra-ui/core";
 import { color } from "src/styles/tokens";
 
 interface ICardInfo {
     name: string;
     age: number;
     id: string;
+    image: string;
 }
 
 export default (props: ICardInfo): JSX.Element => {
@@ -27,10 +36,13 @@ export default (props: ICardInfo): JSX.Element => {
             onClick={goToProfile}
             _hover={{ background: color.grey.v1 }}
         >
-            <Box>
-                <Heading size="md">{props.name}</Heading>
-                <Text mt="4px">{props.age} years old</Text>
-            </Box>
+            <Flex>
+                <Avatar name={props.name} marginRight={8} src={props.image} />
+                <Box>
+                    <Heading size="md">{props.name}</Heading>
+                    <Text mt="4px">{props.age} years old</Text>
+                </Box>
+            </Flex>
             <Icon name="chevron-right" size="32px" opacity={0.3} />
         </PseudoBox>
     );

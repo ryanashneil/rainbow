@@ -1,19 +1,13 @@
-import { Flex, Spinner } from "@chakra-ui/core";
+import { Spinner } from "@chakra-ui/core";
 
-interface ISpinner {
-    margin?: string;
-}
-
-export default (props: ISpinner) => {
+export default () => {
     return (
-        <Flex justifyContent="center" margin={props.margin || "0"}>
-            <Spinner
-                thickness="4px"
-                speed="0.65s"
-                emptyColor="gray.200"
-                color="blue.500"
-                size="xl"
-            />
-        </Flex>
+        <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+        />
     );
 };

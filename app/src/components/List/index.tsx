@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import EmptyState from "src/components/EmptyState";
-import Spinner from "../Spinner";
+import SpinnerCenter from "../Spinner/SpinnerCenter";
 
 interface IList<T> {
     spacing?: number;
@@ -20,7 +20,7 @@ const ListWithSpace = styled.div`
     }
 `;
 
-const ListSpinner = () => <Spinner margin={"24px 0 0 0"} />;
+const ListSpinner = () => <SpinnerCenter margin={"24px 0 0 0"} />;
 
 export default <T extends {}>(props: IList<T>) => {
     const [dataList, setDataList] = useState<T[]>([]);

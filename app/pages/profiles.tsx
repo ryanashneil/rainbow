@@ -10,8 +10,14 @@ export default () => (
         <List
             emptyState={["No profiles found!", "/images/empty_profiles.png"]}
             getItems={() => getAllProfiles(getSession())}
-            buildEachItem={({ key, name, age }) => (
-                <Profile key={key} name={name} age={age} id={key} />
+            buildEachItem={({ key, name, age, image }) => (
+                <Profile
+                    key={key}
+                    name={name}
+                    age={age}
+                    id={key}
+                    image={image}
+                />
             )}
         />
     </Page>

@@ -1,5 +1,5 @@
 import { IFormSchema, useForm, Field } from "src/hooks/useForm";
-import { addProfile } from "src/db/api";
+import { addProfile, uploadPhoto, updateProfile } from "src/db/api";
 import { getSession } from "src/utils/session";
 import Router from "next/router";
 
@@ -15,15 +15,17 @@ import {
     ModalCloseButton
 } from "@chakra-ui/core";
 import FileUpload from "src/components/FileUpload";
+import { useState } from "react";
+import SpinnerOverlay from "../Spinner/SpinnerOverlay";
 
 const NAME = "name";
 const AGE = "age";
-const INTEREST = "interest";
-const SKILLS = "skills";
-const QUALITIES = "qualities";
-const OTHERS = "others";
-const IMPORTANT = "important";
-const SUPPORT = "support";
+const INTEREST = "What I like & know";
+const SKILLS = "What I can do";
+const QUALITIES = "What people like about me";
+const OTHERS = "What I can do for others";
+const IMPORTANT = "What is important to me";
+const SUPPORT = "How to best support me";
 
 const schema: IFormSchema = {
     [NAME]: { type: "text", name: "Name" },
@@ -94,6 +96,8 @@ const schema: IFormSchema = {
 
 export default () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const [file, setFile] = useState<any>(undefined);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const form = useForm(schema);
 
     const submit = async () => {
@@ -101,15 +105,27 @@ export default () => {
         const newKey = await addProfile(id, {
             name: form.getValue(NAME),
             age: form.getValue(AGE),
-            interest: form.getValue(INTEREST),
-            skills: form.getValue(SKILLS),
-            qualities: form.getValue(QUALITIES),
-            others: form.getValue(OTHERS),
-            important: form.getValue(IMPORTANT),
-            support: form.getValue(SUPPORT)
+            info: {
+                [INTEREST]: form.getValue(INTEREST),
+                [SKILLS]: form.getValue(SKILLS),
+                [QUALITIES]: form.getValue(QUALITIES),
+                [OTHERS]: form.getValue(OTHERS),
+                [IMPORTANT]: form.getValue(IMPORTANT),
+                [SUPPORT]: form.getValue(SUPPORT)
+            }
         });
+        if (file) {
+            const imageURL = await uploadPhoto(newKey, file);
+            await updateProfile(id, newKey, { image: imageURL });
+        }
         Router.push(`/details?id=${newKey}`);
         onClose();
+    };
+
+    const handleClick = async () => {
+        setIsSubmitting(true);
+        await submit();
+        setIsSubmitting(false);
     };
 
     return (
@@ -127,6 +143,8 @@ export default () => {
                             title="Upload a Photo"
                             filledTitle="Replace Photo"
                             id="photo"
+                            file={file}
+                            setFile={setFile}
                         />
                         <Field.Input id={NAME} form={form} />
                         <Field.Input id={AGE} form={form} width={"20%"} />
@@ -142,7 +160,7 @@ export default () => {
                             marginBottom="12px"
                             variantColor="teal"
                             mr={3}
-                            onClick={submit}
+                            onClick={handleClick}
                         >
                             Submit
                         </Button>
@@ -152,6 +170,7 @@ export default () => {
                     </ModalFooter>
                 </ModalContent>
             </Modal>
+            {isSubmitting && <SpinnerOverlay />}
         </>
     );
 };
