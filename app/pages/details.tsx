@@ -7,7 +7,7 @@ import AppPage from "src/components/Layout/AppPage";
 import Accordion from "src/components/Accordion";
 import AddInfoModal from "src/components/Template/AddInfoModal";
 import QRCodeModal from "src/components/Template/QRCodeModal";
-import { Image, Flex } from "@chakra-ui/core";
+import { Flex, Avatar } from "@chakra-ui/core";
 import SpinnerCenter from "src/components/Spinner/SpinnerCenter";
 
 export default () => {
@@ -36,7 +36,12 @@ export default () => {
                 direction="column"
                 marginBottom="40px"
             >
-                <Image src={profile.image} marginBottom="24px" />
+                <Avatar
+                    name={profile.name}
+                    src={profile.image}
+                    size={"2xl"}
+                    marginBottom={16}
+                />
                 <QRCodeModal name={profile.name} />
             </Flex>
             <Accordion
