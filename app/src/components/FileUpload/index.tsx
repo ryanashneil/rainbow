@@ -1,4 +1,4 @@
-import { Button, Box, Flex, Avatar } from "@chakra-ui/core";
+import { Button, Flex, Avatar } from "@chakra-ui/core";
 import { ChangeEvent, useState } from "react";
 
 interface IFileUpload {
