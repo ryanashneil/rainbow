@@ -1,5 +1,5 @@
 import { IFormSchema, useForm, Field } from "src/hooks/useForm";
-import { addProfile, uploadPhoto } from "src/db/api";
+import { addProfile } from "src/db/api";
 import { getSession } from "src/utils/session";
 import Router from "next/router";
 
@@ -14,6 +14,7 @@ import {
     ModalFooter,
     ModalCloseButton
 } from "@chakra-ui/core";
+import FileUpload from "src/components/FileUpload";
 
 const NAME = "name";
 const AGE = "age";
@@ -107,7 +108,6 @@ export default () => {
             important: form.getValue(IMPORTANT),
             support: form.getValue(SUPPORT)
         });
-        uploadPhoto(id, Router);
         Router.push(`/details?id=${newKey}`);
         onClose();
     };
@@ -123,6 +123,7 @@ export default () => {
                     <ModalHeader>New Profile</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
+                        <FileUpload title="Upload a Photo" id="photo" />
                         <Field.Input id={NAME} form={form} />
                         <Field.Input id={AGE} form={form} width={"20%"} />
                         <Field.Input id={INTEREST} form={form} />
