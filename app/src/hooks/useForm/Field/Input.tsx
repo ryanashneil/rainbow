@@ -28,8 +28,11 @@ const FieldInput = (props: IFieldInputProps): JSX.Element => {
 
     return (
         <FormControl isInvalid={!!field.error} marginBottom="24px">
-            <FormLabel htmlFor={id}>{field.name}</FormLabel>
+            <FormLabel fontWeight="medium" htmlFor={id}>
+                {field.name}
+            </FormLabel>
             <FieldElement
+                marginTop="4px"
                 id={id}
                 type={field.type === "textarea" ? "text" : field.type}
                 placeholder={field.placeholder}
