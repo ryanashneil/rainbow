@@ -123,7 +123,11 @@ export default () => {
                     <ModalHeader>New Profile</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        <FileUpload title="Upload a Photo" id="photo" />
+                        <FileUpload
+                            title="Upload a Photo"
+                            filledTitle="Replace Photo"
+                            id="photo"
+                        />
                         <Field.Input id={NAME} form={form} />
                         <Field.Input id={AGE} form={form} width={"20%"} />
                         <Field.Input id={INTEREST} form={form} />

@@ -17,15 +17,19 @@ export default (props: IFileUpload) => {
         <Flex width="100%" alignItems="center" direction="column">
             <Avatar size="xl" marginBottom="24px" src={file} />
             <Button>
-                <label htmlFor={props.id}>{props.title}</label>
+                <label htmlFor={props.id}>
+                    {props.filledTitle && file
+                        ? props.filledTitle
+                        : props.title}
+                </label>
             </Button>
             <input
-                style={{ display: "none" }}
-                accept="image/*"
                 id={props.id}
+                accept="image/*"
                 type="file"
                 name="upload"
                 onChange={onFileUpload}
+                style={{ display: "none" }}
             />
         </Flex>
     );
