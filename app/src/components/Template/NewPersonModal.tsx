@@ -20,12 +20,12 @@ import SpinnerOverlay from "../Spinner/SpinnerOverlay";
 
 const NAME = "name";
 const AGE = "age";
-const INTEREST = "interest";
-const SKILLS = "skills";
-const QUALITIES = "qualities";
-const OTHERS = "others";
-const IMPORTANT = "important";
-const SUPPORT = "support";
+const INTEREST = "What I like & know";
+const SKILLS = "What I can do";
+const QUALITIES = "What people like about me";
+const OTHERS = "What I can do for others";
+const IMPORTANT = "What is important to me";
+const SUPPORT = "How to best support me";
 
 const schema: IFormSchema = {
     [NAME]: { type: "text", name: "Name" },
@@ -105,12 +105,14 @@ export default () => {
         const newKey = await addProfile(id, {
             name: form.getValue(NAME),
             age: form.getValue(AGE),
-            interest: form.getValue(INTEREST),
-            skills: form.getValue(SKILLS),
-            qualities: form.getValue(QUALITIES),
-            others: form.getValue(OTHERS),
-            important: form.getValue(IMPORTANT),
-            support: form.getValue(SUPPORT)
+            info: {
+                [INTEREST]: form.getValue(INTEREST),
+                [SKILLS]: form.getValue(SKILLS),
+                [QUALITIES]: form.getValue(QUALITIES),
+                [OTHERS]: form.getValue(OTHERS),
+                [IMPORTANT]: form.getValue(IMPORTANT),
+                [SUPPORT]: form.getValue(SUPPORT)
+            }
         });
         if (file) {
             const imageURL = await uploadPhoto(newKey, file);
