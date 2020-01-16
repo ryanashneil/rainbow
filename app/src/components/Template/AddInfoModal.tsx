@@ -50,7 +50,12 @@ export default (props: IModal) => {
     return (
         <>
             <Flex justifyContent="center" alignItems="center" width="100%">
-                <Button leftIcon="add" onClick={onOpen} variantColor="teal">
+                <Button
+                    leftIcon="add"
+                    onClick={onOpen}
+                    variantColor="teal"
+                    marginTop="24px"
+                >
                     Add New Section
                 </Button>
             </Flex>
