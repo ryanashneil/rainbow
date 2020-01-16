@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Spinner, Flex } from "@chakra-ui/core";
 import styled from "@emotion/styled";
 import EmptyState from "src/components/EmptyState";
+import Spinner from "../Spinner";
 
 interface IList<T> {
     spacing?: number;
@@ -20,17 +20,7 @@ const ListWithSpace = styled.div`
     }
 `;
 
-const ListSpinner = () => (
-    <Flex justifyContent="center" marginTop="24px">
-        <Spinner
-            thickness="4px"
-            speed="0.65s"
-            emptyColor="gray.200"
-            color="blue.500"
-            size="xl"
-        />
-    </Flex>
-);
+const ListSpinner = () => <Spinner margin={"24px 0 0 0"} />;
 
 export default <T extends {}>(props: IList<T>) => {
     const [dataList, setDataList] = useState<T[]>([]);
