@@ -1,5 +1,5 @@
 import { IFormSchema, useForm, Field } from "src/hooks/useForm";
-import { addProfile } from "src/db/api";
+import { addProfile, uploadPhoto } from "src/db/api";
 import { getSession } from "src/utils/session";
 import Router from "next/router";
 
@@ -96,7 +96,8 @@ export default () => {
     const form = useForm(schema);
 
     const submit = async () => {
-        const newKey = await addProfile(getSession(), {
+        const id = getSession();
+        const newKey = await addProfile(id, {
             name: form.getValue(NAME),
             age: form.getValue(AGE),
             interest: form.getValue(INTEREST),
@@ -106,6 +107,7 @@ export default () => {
             important: form.getValue(IMPORTANT),
             support: form.getValue(SUPPORT)
         });
+        uploadPhoto(id, Router);
         Router.push(`/details?id=${newKey}`);
         onClose();
     };
