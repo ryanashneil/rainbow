@@ -29,7 +29,11 @@ export default () => {
     }
 
     return (
-        <AppPage title={profile.name} subtitle={"24 years old"} hasBackButton>
+        <AppPage
+            title={profile.name}
+            subtitle={`${profile.age} years old`}
+            hasBackButton
+        >
             <Flex
                 width="100%"
                 alignItems="center"
@@ -42,7 +46,11 @@ export default () => {
                     size={"2xl"}
                     marginBottom={16}
                 />
-                <QRCodeModal name={profile.name} />
+                <QRCodeModal
+                    img={profile.image}
+                    name={profile.name}
+                    id={profileId as string}
+                />
             </Flex>
             <Accordion
                 items={profile.info}

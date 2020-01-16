@@ -5,7 +5,6 @@ import {
     useDisclosure,
     Box,
     Button,
-    ButtonGroup,
     Flex,
     Modal,
     ModalOverlay,
@@ -13,16 +12,19 @@ import {
     ModalHeader,
     ModalBody,
     ModalFooter,
-    ModalCloseButton
+    ModalCloseButton,
+    Avatar
 } from "@chakra-ui/core";
 
 interface IModal {
     name: string;
+    id: string;
+    img?: string;
 }
 
 export default (props: IModal) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-
+    const URL = `https://raindex-passport.web.app/view?id=${props.id}`;
     return (
         <>
             <Button leftIcon="add" onClick={onOpen} variantColor="teal">
@@ -39,46 +41,43 @@ export default (props: IModal) => {
                                 You can now use {props.name}&#39;s personal QR
                                 code.
                             </Box>
-                            <QRCode
-                                padding="20px"
-                                size="100"
-                                value="www.google.com"
+                            <Avatar
+                                name={props.name}
+                                src={props.img}
+                                size={"2xl"}
+                                marginBottom={8}
+                                marginTop={8}
                             />
-                            <ButtonGroup
-                                marginTop="20px"
-                                spacing={4}
-                                width={[
-                                    "15%", // base
-                                    "25%", // 480px upwards
-                                    "50%", // 768px upwards
-                                    "100%" // 992px upwards
-                                ]}
+                            <QRCode padding="20px" size="300" value={URL} />
+                            <Flex
+                                marginTop="40px"
+                                marginBottom="100px"
+                                direction={["column", "column", "row"]}
                             >
                                 <Button
                                     leftIcon="download"
                                     onClick={onOpen}
                                     variantColor="teal"
-                                    marginBottom="12px"
+                                    margin="8px"
                                 >
                                     Save image
                                 </Button>
                                 <Button
                                     leftIcon="copy"
                                     onClick={onOpen}
-                                    variantColor="teal"
-                                    marginBottom="12px"
+                                    variantColor="blue"
+                                    margin="8px"
                                 >
                                     Copy image
                                 </Button>
                                 <Button
                                     leftIcon={FaPrint}
                                     onClick={onOpen}
-                                    variantColor="teal"
-                                    marginBottom="12px"
+                                    margin="8px"
                                 >
                                     Send to print
                                 </Button>
-                            </ButtonGroup>
+                            </Flex>
                         </Flex>
                     </ModalBody>
                     <ModalFooter></ModalFooter>
