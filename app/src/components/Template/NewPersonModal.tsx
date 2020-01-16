@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/core";
 import FileUpload from "src/components/FileUpload";
 import { useState } from "react";
+import SpinnerOverlay from "../Spinner/SpinnerOverlay";
 
 const NAME = "name";
 const AGE = "age";
@@ -96,6 +97,7 @@ const schema: IFormSchema = {
 export default () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [file, setFile] = useState<any>(undefined);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const form = useForm(schema);
 
     const submit = async () => {
@@ -116,6 +118,12 @@ export default () => {
         }
         Router.push(`/details?id=${newKey}`);
         onClose();
+    };
+
+    const handleClick = async () => {
+        setIsSubmitting(true);
+        await submit();
+        setIsSubmitting(false);
     };
 
     return (
@@ -150,7 +158,7 @@ export default () => {
                             marginBottom="12px"
                             variantColor="teal"
                             mr={3}
-                            onClick={submit}
+                            onClick={handleClick}
                         >
                             Submit
                         </Button>
@@ -160,6 +168,7 @@ export default () => {
                     </ModalFooter>
                 </ModalContent>
             </Modal>
+            {isSubmitting && <SpinnerOverlay />}
         </>
     );
 };

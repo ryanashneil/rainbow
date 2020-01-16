@@ -7,8 +7,8 @@ import AppPage from "src/components/Layout/AppPage";
 import Accordion from "src/components/Accordion";
 import AddInfoModal from "src/components/Template/AddInfoModal";
 import QRCodeModal from "src/components/Template/QRCodeModal";
-import Spinner from "src/components/Spinner";
 import { Image, Flex } from "@chakra-ui/core";
+import SpinnerCenter from "src/components/Spinner/SpinnerCenter";
 
 export default () => {
     const [profile, setProfile] = useState<IPerson | undefined>(undefined);
@@ -23,7 +23,7 @@ export default () => {
     if (!profile) {
         return (
             <AppPage>
-                <Spinner />
+                <SpinnerCenter />
             </AppPage>
         );
     }
