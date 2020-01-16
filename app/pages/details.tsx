@@ -5,8 +5,9 @@ import { getProfile } from "src/db/api";
 import { IPerson } from "src/db/interface";
 import AppPage from "src/components/Layout/AppPage";
 import Accordion from "src/components/Accordion";
-import { Spinner, Box, Flex } from "@chakra-ui/core";
+import { Box } from "@chakra-ui/core";
 import AddInfoModal from "src/components/Template/AddInfoModal";
+import Spinner from "src/components/Spinner";
 
 export default () => {
     const [profile, setProfile] = useState<IPerson | undefined>(undefined);
@@ -21,15 +22,7 @@ export default () => {
     if (!profile) {
         return (
             <AppPage>
-                <Flex justifyContent="center">
-                    <Spinner
-                        thickness="4px"
-                        speed="0.65s"
-                        emptyColor="gray.200"
-                        color="blue.500"
-                        size="xl"
-                    />
-                </Flex>
+                <Spinner />
             </AppPage>
         );
     }
