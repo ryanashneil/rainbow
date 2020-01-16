@@ -6,6 +6,7 @@ interface IProps extends React.Props<{}> {
     height?: number;
     width?: number;
     marginTop?: string;
+    marginBottom?: string;
 }
 
 export default (props: IProps): JSX.Element => (
@@ -19,6 +20,7 @@ export default (props: IProps): JSX.Element => (
         padding="0 20px"
         background={props.background || "transparent"}
         marginTop={props.marginTop || "auto"}
+        marginBottom={props.marginBottom || "auto"}
     >
         <Box maxWidth={props.width || "700px"} width="100%">
             {props.children}
