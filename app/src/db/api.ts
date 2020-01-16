@@ -1,5 +1,6 @@
 import { db, get, list } from "./util";
 import { IPerson, IObject, IProfile } from "./interface";
+import firebase from "./config";
 
 export const addProfile = async (
     userId: string,
@@ -27,4 +28,13 @@ export const getProfile = async (
     profileId: string
 ): Promise<IPerson> => {
     return await get<IPerson>(`/${userId}/${profileId}`);
+};
+
+export const uploadPhoto = async (id, file: any) => {
+    const blob = new Blob([file], { type: "image/png" });
+
+    return await firebase
+        .storage()
+        .ref(`/${id}/hello`)
+        .put(blob);
 };
