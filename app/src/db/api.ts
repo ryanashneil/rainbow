@@ -18,6 +18,14 @@ export const updateProfileInfo = async (
     await db(`/${userId}/${profileId}/info`).update(newInfo);
 };
 
+export const updateProfile = async (
+    userId: string,
+    profileId: string,
+    newInfo: any
+): Promise<void> => {
+    await db(`/${userId}/${profileId}`).update(newInfo);
+};
+
 export const getAllProfiles = async (userId: string): Promise<IProfile[]> => {
     const dataObj = await get<IObject<IPerson>>(`/${userId}`);
     return list(dataObj) as IProfile[];
@@ -31,12 +39,13 @@ export const getProfile = async (
 };
 
 export const uploadPhoto = async (id: string, file: File) => {
-    const blob = new Blob([file], { type: "image/png" });
-
-    return await firebase
+    // const blob = new Blob([file], { type: "image/png" });
+    const response = await firebase
         .storage()
-        .ref(`/${id}/photo`)
-        .put(blob);
+        .ref(`/${id}`)
+        .put(file);
+    const url = await response.ref.getDownloadURL();
+    return url;
 };
 
 export const getPhotoURL = async (): Promise<string> => {

@@ -1,5 +1,5 @@
 import { IFormSchema, useForm, Field } from "src/hooks/useForm";
-import { addProfile } from "src/db/api";
+import { addProfile, uploadPhoto, updateProfile } from "src/db/api";
 import { getSession } from "src/utils/session";
 import Router from "next/router";
 
@@ -15,6 +15,7 @@ import {
     ModalCloseButton
 } from "@chakra-ui/core";
 import FileUpload from "src/components/FileUpload";
+import { useState } from "react";
 
 const NAME = "name";
 const AGE = "age";
@@ -94,6 +95,7 @@ const schema: IFormSchema = {
 
 export default () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const [file, setFile] = useState<any>(undefined);
     const form = useForm(schema);
 
     const submit = async () => {
@@ -108,6 +110,10 @@ export default () => {
             important: form.getValue(IMPORTANT),
             support: form.getValue(SUPPORT)
         });
+        if (file) {
+            const imageURL = await uploadPhoto(newKey, file);
+            await updateProfile(id, newKey, { image: imageURL });
+        }
         Router.push(`/details?id=${newKey}`);
         onClose();
     };
@@ -127,6 +133,8 @@ export default () => {
                             title="Upload a Photo"
                             filledTitle="Replace Photo"
                             id="photo"
+                            file={file}
+                            setFile={setFile}
                         />
                         <Field.Input id={NAME} form={form} />
                         <Field.Input id={AGE} form={form} width={"20%"} />

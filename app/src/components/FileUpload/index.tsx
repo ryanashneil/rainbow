@@ -1,24 +1,30 @@
 import { Button, Flex, Avatar } from "@chakra-ui/core";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 
 interface IFileUpload {
     title: string;
     filledTitle?: string;
     id: string;
+    file: any;
+    setFile: (e: any) => void;
 }
 
 export default (props: IFileUpload) => {
-    const [file, setFile] = useState<any>(undefined);
     const onFileUpload = (event: ChangeEvent<HTMLInputElement>) => {
-        setFile(URL.createObjectURL(event.target.files[0]));
+        console.log(event.target.files[0]);
+        props.setFile(event.target.files[0]);
     };
 
     return (
         <Flex width="100%" alignItems="center" direction="column">
-            <Avatar size="xl" marginBottom="24px" src={file} />
+            <Avatar
+                size="xl"
+                marginBottom="24px"
+                src={props.file ? URL.createObjectURL(props.file) : undefined}
+            />
             <Button>
                 <label htmlFor={props.id}>
-                    {props.filledTitle && file
+                    {props.filledTitle && props.file
                         ? props.filledTitle
                         : props.title}
                 </label>
