@@ -7,7 +7,9 @@ import AppPage from "src/components/Layout/AppPage";
 import Accordion from "src/components/Accordion";
 import { Box } from "@chakra-ui/core";
 import AddInfoModal from "src/components/Template/AddInfoModal";
+import QRCodeModal from "src/components/Template/QRCodeModal";
 import Spinner from "src/components/Spinner";
+
 
 export default () => {
     const [profile, setProfile] = useState<IPerson | undefined>(undefined);
@@ -29,6 +31,7 @@ export default () => {
 
     return (
         <AppPage title={profile.name} subtitle={"24 years old"}>
+        <QRCodeModal name={profile.name}/>
             <Accordion
                 items={profile.info}
                 emptyState={["No Info specified!", "/images/empty_info.png"]}
