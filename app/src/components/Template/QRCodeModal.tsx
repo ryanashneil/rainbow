@@ -24,14 +24,12 @@ import {
 } from "@chakra-ui/core";
 
 interface IModal {
-  name: string;
+    name: string;
 }
 
 export default (props: IModal) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const clipboard = useClipboard();
-
-
 
     return (
         <>
@@ -65,8 +63,7 @@ export default (props: IModal) => {
                     </Flex>
 
                     </ModalBody>
-                    <ModalFooter>
-                    </ModalFooter>
+                    <ModalFooter></ModalFooter>
                 </ModalContent>
             </Modal>
         </>
