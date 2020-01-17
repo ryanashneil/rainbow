@@ -1,11 +1,18 @@
-import { FaPrint } from "react-icons/fa";
-import QRCode from "qrcode.react";
+import { IFormSchema, useForm, Field } from "src/hooks/useForm";
+import { addProfile, uploadPhoto } from "src/db/api";
+import { getSession } from "src/utils/session";
+import Router from "next/router";
+import { FaPrint } from 'react-icons/fa';
+import QRCode from 'qrcode.react';
+import React from 'react';
+import { useClipboard } from 'use-clipboard-copy';
 
 import {
     useDisclosure,
     Box,
     Button,
     Flex,
+    Input,
     Modal,
     ModalOverlay,
     ModalContent,
@@ -85,10 +92,12 @@ export default (props: IModal) => {
                                 </Button>
                             </Flex>
                         </Flex>
+                    </Flex>
+
                     </ModalBody>
-                    <ModalFooter></ModalFooter>
+                <ModalFooter></ModalFooter>
                 </ModalContent>
-            </Modal>
+        </Modal>
         </>
     );
 };
