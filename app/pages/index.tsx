@@ -19,7 +19,9 @@ export default () => {
             <Segment marginTop="40px" marginBottom="40px">
                 <Image src={"/icons/180-nobg.png"} marginLeft={"-46px"} />
                 <h1>Welcome to </h1>
-                <h1>RainDex </h1>
+                <h1>
+                    Rain<span style={{ color: "teal" }}>Dex</span>{" "}
+                </h1>
                 <br />
                 <Box width={"80%"}>
                     <p>
