@@ -32,10 +32,10 @@ const schema: IFormSchema = {
     [AGE]: { type: "number", name: "Age" },
     [INTEREST]: {
         type: "textarea",
-        name: "Let others know more about what I like & know",
+        name: "Share what you like & learnt",
         helpertext: (
             <>
-                <div>Your interests</div>
+                <div>What are your interests?</div>
                 <div>What makes you unique?</div>
                 <div>What have you learnt?</div>
             </>
@@ -43,52 +43,52 @@ const schema: IFormSchema = {
     },
     [SKILLS]: {
         type: "textarea",
-        name: "Let others know more about what I can do",
+        name: "Share what you can do",
         helpertext: (
             <>
                 <div>What are you good at?</div>
-                <div>What you do everyday?</div>
-                <div>What you enjoy doing?</div>
+                <div>What do you do everyday?</div>
+                <div>What do you enjoy doing?</div>
                 <div>What are your proudest achievements?</div>
             </>
         )
     },
     [QUALITIES]: {
         type: "textarea",
-        name: "Let others know more about what people like about me",
-        helpertext: <div>What people say are your positive qualities</div>
+        name: "Share what people like about you",
+        helpertext: <div>What do people say are your positive qualities?</div>
     },
     [OTHERS]: {
         type: "textarea",
-        name: "Let others know more about what I can do for others",
+        name: "Share what you can do for others",
         helpertext: (
             <>
-                <div>What you do for your friends or family</div>
-                <div>How you are contributing now</div>
+                <div>What do you do for your friends or family?</div>
+                <div>How you are contributing now?</div>
             </>
         )
     },
     [IMPORTANT]: {
         type: "textarea",
-        name: "Let others know more about what is important to me",
+        name: "Share what is important to you",
         helpertext: (
             <>
-                <div>What makes you happy</div>
-                <div>Where your favourite places are</div>
-                <div>What is your favourite possession</div>
-                <div>What motivates you</div>
-                <div>What you cannot live without</div>
+                <div>What makes you happy?</div>
+                <div>Where are your favourite places?</div>
+                <div>What is your favourite possession?</div>
+                <div>What motivates you?</div>
+                <div>What can you not live without?</div>
             </>
         )
     },
     [SUPPORT]: {
         type: "textarea",
-        name: "Let others know more about how to best support me",
+        name: "Let others know more about how to best support you",
         helpertext: (
             <>
-                <div>How to best communicate with you</div>
-                <div>What helps you learn better</div>
-                <div>What helps calm you down</div>
+                <div>How to best communicate with you?</div>
+                <div>What helps you learn better?</div>
+                <div>What helps calm you down?</div>
             </>
         )
     }
