@@ -118,7 +118,7 @@ export default () => {
             const imageURL = await uploadPhoto(newKey, file);
             await updateProfile(id, newKey, { image: imageURL });
         }
-        Router.push(`/details?id=${newKey}`);
+        Router.push(`/details.html?id=${newKey}`);
         onClose();
     };
 

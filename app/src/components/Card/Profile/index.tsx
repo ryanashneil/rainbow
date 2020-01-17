@@ -20,7 +20,7 @@ interface ICardInfo {
 
 export default (props: ICardInfo): JSX.Element => {
     const goToProfile = (): void => {
-        Router.push("/details?id=" + props.id);
+        Router.push("/details.html?id=" + props.id);
     };
     return (
         <PseudoBox

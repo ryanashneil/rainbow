@@ -11,7 +11,6 @@ import {
     useDisclosure,
     Box,
     Button,
-    ButtonGroup,
     Flex,
     Input,
     Modal,
@@ -20,17 +19,20 @@ import {
     ModalHeader,
     ModalBody,
     ModalFooter,
-    ModalCloseButton
+    ModalCloseButton,
+    Avatar
 } from "@chakra-ui/core";
 
 interface IModal {
     name: string;
+    id: string;
+    user: string;
+    img?: string;
 }
 
 export default (props: IModal) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const clipboard = useClipboard();
-
+    const URL = `https://raindex-passport.web.app/view.html?id=${props.id}&ref=${props.user}`;
     return (
         <>
             <Button leftIcon="add" onClick={onOpen} variantColor="teal">
@@ -42,30 +44,60 @@ export default (props: IModal) => {
                     <ModalHeader>QR code generated!</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-
-                    <Flex alignItems="center" direction="column">
-                      <Box padding="20px">
-                      You can now use {props.name}'s personal QR code.
-                      </Box>
-                      <QRCode padding="20px" size="100" value="www.google.com"/>
-                        <Flex direction={["column", "column", "row"]}>
-                        <Button leftIcon="download" onClick={onOpen} variantColor="teal" margin="10px">
-                            Save image
-                        </Button>
-                        //<input ref={clipboard.target} value="I AM COPIED"/>
-                        <Button leftIcon="copy" onClick={clipboard.copy} variantColor="teal" margin="10px">
-                            {clipboard.copied ? 'Image copied' : 'Copy image'}
-                        </Button>
-                        <Button leftIcon={FaPrint} onClick={onOpen} variantColor="teal" margin="10px">
-                            Send to print
-                        </Button>
+                        <Flex alignItems="center" direction="column">
+                            <Box padding="20px">
+                                You can now use {props.name}&#39;s personal QR
+                                code.
+                            </Box>
+                            <Avatar
+                                name={props.name}
+                                src={props.img}
+                                size={"2xl"}
+                                marginBottom={8}
+                                marginTop={8}
+                            />
+                            <QRCode
+                                padding="20px"
+                                size="100"
+                                value={URL}
+                                style={{ maxWidth: "90%" }}
+                            />
+                            <Flex
+                                marginTop="40px"
+                                marginBottom="100px"
+                                direction={["column", "column", "row"]}
+                            >
+                                <Button
+                                    leftIcon="download"
+                                    onClick={onOpen}
+                                    variantColor="teal"
+                                    margin="8px"
+                                >
+                                    Save image
+                                </Button>
+                                <Button
+                                    leftIcon="copy"
+                                    onClick={onOpen}
+                                    variantColor="blue"
+                                    margin="8px"
+                                >
+                                    Copy image
+                                </Button>
+                                <Button
+                                    leftIcon={FaPrint}
+                                    onClick={onOpen}
+                                    margin="8px"
+                                >
+                                    Send to print
+                                </Button>
+                            </Flex>
                         </Flex>
                     </Flex>
 
                     </ModalBody>
-                    <ModalFooter></ModalFooter>
+                <ModalFooter></ModalFooter>
                 </ModalContent>
-            </Modal>
+        </Modal>
         </>
     );
 };
