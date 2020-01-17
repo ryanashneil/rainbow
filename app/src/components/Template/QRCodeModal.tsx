@@ -1,11 +1,6 @@
-import { IFormSchema, useForm, Field } from "src/hooks/useForm";
-import { addProfile, uploadPhoto } from "src/db/api";
-import { getSession } from "src/utils/session";
-import Router from "next/router";
-import { FaPrint } from 'react-icons/fa';
-import QRCode from 'qrcode.react';
-import React from 'react';
-import { useClipboard } from 'use-clipboard-copy';
+import { FaPrint } from "react-icons/fa";
+import QRCode from "qrcode.react";
+import React from "react";
 
 import {
     useDisclosure,
@@ -92,12 +87,9 @@ export default (props: IModal) => {
                                 </Button>
                             </Flex>
                         </Flex>
-                    </Flex>
-
                     </ModalBody>
-                <ModalFooter></ModalFooter>
                 </ModalContent>
-        </Modal>
+            </Modal>
         </>
     );
 };
