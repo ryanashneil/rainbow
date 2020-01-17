@@ -19,12 +19,13 @@ import {
 interface IModal {
     name: string;
     id: string;
+    user: string;
     img?: string;
 }
 
 export default (props: IModal) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const URL = `https://raindex-passport.web.app/view?id=${props.id}`;
+    const URL = `https://raindex-passport.web.app/view.html?id=${props.id}&ref=${props.user}`;
     return (
         <>
             <Button leftIcon="add" onClick={onOpen} variantColor="teal">
@@ -48,7 +49,12 @@ export default (props: IModal) => {
                                 marginBottom={8}
                                 marginTop={8}
                             />
-                            <QRCode padding="20px" size="300" value={URL} />
+                            <QRCode
+                                padding="20px"
+                                size="100"
+                                value={URL}
+                                style={{ maxWidth: "90%" }}
+                            />
                             <Flex
                                 marginTop="40px"
                                 marginBottom="100px"

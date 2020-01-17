@@ -49,6 +49,7 @@ export default () => {
                 <QRCodeModal
                     img={profile.image}
                     name={profile.name}
+                    user={getSession()}
                     id={profileId as string}
                 />
             </Flex>

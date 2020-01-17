@@ -9,7 +9,7 @@ export default () => {
     const router = useRouter();
 
     const handleLogin = () => {
-        router.push("/login");
+        router.push("/login.html");
     };
 
     return (

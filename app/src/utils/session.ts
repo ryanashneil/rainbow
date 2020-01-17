@@ -6,7 +6,7 @@ export const getSession = (): string | undefined => {
     try {
         const userId = localStorage.getItem(ID);
         if (!userId) {
-            Router.replace("/login");
+            Router.replace("/login.html");
         }
         return userId;
     } catch {
@@ -25,7 +25,7 @@ export const isLoggedIn = (): boolean => {
 export const logout = (): void => {
     try {
         localStorage.removeItem(ID);
-        Router.push("/login");
+        Router.push("/login.html");
     } catch {
         return;
     }

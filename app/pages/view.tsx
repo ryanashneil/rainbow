@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { getSession } from "src/utils/session";
 import { getProfile } from "src/db/api";
 import { IPerson } from "src/db/interface";
 import AppPage from "src/components/Layout/AppPage";
@@ -12,12 +11,11 @@ import Segment from "src/components/Layout/Segment";
 
 export default () => {
     const [profile, setProfile] = useState<IPerson | undefined>(undefined);
-    const { id: profileId } = useRouter().query;
+    const { id: profileId, ref: userId } = useRouter().query;
     useEffect(() => void fetchProfile(), [profileId]);
 
     const fetchProfile = async () => {
-        const userId = getSession();
-        setProfile(await getProfile(userId, profileId as string));
+        setProfile(await getProfile(userId as string, profileId as string));
     };
 
     if (!profile) {
